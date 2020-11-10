@@ -110,20 +110,6 @@ class GamePlayButton(BaseButton):
     game_metadata: Optional[GameMetadata]
 
 
-# class Button(BaseModel):
-#     """
-#     https://developers.facebook.com/docs/messenger-platform/reference/buttons/url#properties
-#     """
-#     type: Literal["web_url", "postback", "phone_number", "account_link", "account_unlink", "game_play"]
-#     title: str
-#     payload: Optional[str]  # for type : postback / phone_number / game_play
-#     url: Optional[HttpUrl]  # for type: web_url / LogIn
-#     webview_height_ratio: Optional[Literal["compact", "tall", "full"]]  # for type: web_url
-#     messenger_extensions: Optional[bool]  # for type: web_url
-#     fallback_url: Optional[HttpUrl]  # for type: web_url
-#     webview_share_button: Optional[str]  # for type: web_url
-#     game_metadata: Optional[GameMetadata]  # for type : game_play
-
 AllButtonTypes = Union[
     URLButton,
     PostbackButton,
