@@ -37,6 +37,7 @@ Temporary Items
 # User-specific stuff
 .idea/**/workspace.xml
 .idea/**/tasks.xml
+.idea/**/aws.xml
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf

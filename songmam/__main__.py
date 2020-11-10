@@ -1,12 +1,12 @@
 # type: ignore[attr-defined]
 
+from typing import Optional
+
 import random
 from enum import Enum
-from typing import Optional
 
 import typer
 from rich.console import Console
-
 from songmam import __version__
 from songmam.example import hello
 
@@ -42,13 +42,16 @@ def main(
     name: str = typer.Option(..., help="Name of person to greet."),
     color: Optional[Color] = typer.Option(
         None,
-        "-c", "--color", "--colour",
+        "-c",
+        "--color",
+        "--colour",
         case_sensitive=False,
         help="Color for name. If not specified then choice will be random.",
     ),
     version: bool = typer.Option(
         None,
-        "-v", "--version",
+        "-v",
+        "--version",
         callback=version_callback,
         is_eager=True,
         help="Prints the version of the songmam package.",
