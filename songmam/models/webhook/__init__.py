@@ -24,6 +24,13 @@ class Webhook(BaseModel):
 
     @validator("object")
     def object_equal_page(cls, v):
+        """
+        Check if two objects are equal.
+
+        Args:
+            cls: (todo): write your description
+            v: (todo): write your description
+        """
         if v != "page":
             error_msg = "only support page subscription"
             logger.error(error_msg)

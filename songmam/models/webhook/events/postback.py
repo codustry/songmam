@@ -28,6 +28,12 @@ class PostbackEvent(BaseEvent, WithMessaging):
 
     @property
     def payload(self):
+        """
+        Return the payload.
+
+        Args:
+            self: (todo): write your description
+        """
         postback: Postback = self.theMessaging.postback
         return postback.payload
 

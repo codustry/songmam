@@ -11,6 +11,12 @@ from pydantic import conint
 
 
 def base64_url_decode(inp) -> bytes:
+    """
+    Decode base64 - 64 string.
+
+    Args:
+        inp: (str): write your description
+    """
     padding_factor = (4 - len(inp) % 4) % 4
     inp += "=" * padding_factor
     return base64.b64decode(inp.translate(dict(zip(map(ord, "-_"), "+/"))))
@@ -63,6 +69,12 @@ signed_request_regex = re.compile(pattern)
 class SignedRequest(str):
     @classmethod
     def __get_validators__(cls):
+        """
+        Return a list of validators.
+
+        Args:
+            cls: (todo): write your description
+        """
         # one or more validators may be yielded which will be called in the
         # order to validate the input, each validator will receive as an input
         # the value returned from the previous validator
@@ -70,6 +82,13 @@ class SignedRequest(str):
 
     @classmethod
     def __modify_schema__(cls, field_schema):
+        """
+        Modify schema schema.
+
+        Args:
+            cls: (todo): write your description
+            field_schema: (todo): write your description
+        """
         # __modify_schema__ should mutate the dict it receives in place,
         # the returned value will be ignored
         field_schema.update(
@@ -83,6 +102,13 @@ class SignedRequest(str):
 
     @classmethod
     def validate(cls, v):
+        """
+        Validate a request.
+
+        Args:
+            cls: (callable): write your description
+            v: (array): write your description
+        """
         if not isinstance(v, str):
             raise TypeError("string required")
         m = signed_request_regex.fullmatch(v)
@@ -95,6 +121,12 @@ class SignedRequest(str):
         return cls(v)
 
     def __repr__(self):
+        """
+        Return a repr representation of a repr__.
+
+        Args:
+            self: (todo): write your description
+        """
         return f"SignedRequest({super().__repr__()})"
 
     def verify(
@@ -102,6 +134,17 @@ class SignedRequest(str):
         app_secret,
         acceptable_freshness_sec: Optional[conint(ge=0)] = None,
     ) -> Optional[RequestContent]:
+        """
+        Verifies a signed signed request.
+
+        Args:
+            self: (todo): write your description
+            app_secret: (str): write your description
+            acceptable_freshness_sec: (str): write your description
+            Optional: (todo): write your description
+            conint: (str): write your description
+            ge: (str): write your description
+        """
         return verify_signed_request(self, app_secret, acceptable_freshness_sec)
 
 

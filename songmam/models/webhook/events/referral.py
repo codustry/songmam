@@ -27,6 +27,13 @@ class ReferralMessaging(BaseMessaging, WithTimestamp):
     referral: Referral
 
     def __getattr__(self, item):
+        """
+        Return the value from an item
+
+        Args:
+            self: (todo): write your description
+            item: (str): write your description
+        """
         return getattr(self.referral, item)
 
 
@@ -35,6 +42,12 @@ class MessagingReferralEvent(BaseEvent, WithMessaging):
 
     @property
     def ref(self):
+        """
+        : return the reference
+
+        Args:
+            self: (todo): write your description
+        """
         return self.theMessaging.ref
 
 

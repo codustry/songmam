@@ -35,6 +35,12 @@ class Message(BaseModel):
 
     @property
     def is_quick_reply(self):
+        """
+        Return true if this node is a quick reply.
+
+        Args:
+            self: (todo): write your description
+        """
         return False
 
 
@@ -43,13 +49,31 @@ class MessageWithQuickReply(Message):
 
     @property
     def is_quick_reply(self):
+        """
+        Return true if the user has a quick reply.
+
+        Args:
+            self: (todo): write your description
+        """
         return True
 
     @property
     def payload(self):
+        """
+        Return the payload.
+
+        Args:
+            self: (todo): write your description
+        """
         return self.quick_reply.payload
 
     def convert_to_no_reply(self):
+        """
+        Convert reply to reply
+
+        Args:
+            self: (todo): write your description
+        """
         return Message(**self.dict(exclude={"quick_replies"}))
 
 
@@ -66,6 +90,12 @@ class MessageMessagingWithQuickReply(BaseMessaging, WithTimestamp):
     message: MessageWithQuickReply
 
     def convert_to_no_reply(self):
+        """
+        Convert reply message to reply.
+
+        Args:
+            self: (todo): write your description
+        """
         message_without_reply = self.message.convert_to_no_reply()
         return MessageMessaging(
             **self.dict(exclude={"message"}), message=message_without_reply
@@ -79,10 +109,22 @@ class UnifiedMessagesEvent(BaseEvent, WithMessaging):
 
     @property
     def is_quick_reply(self):
+        """
+        Return true if the : class : py : meth :. wquickaging.
+
+        Args:
+            self: (todo): write your description
+        """
         return self.theMessaging.message.is_quick_reply
 
     @property
     def payload(self):
+        """
+        Return the payload.
+
+        Args:
+            self: (todo): write your description
+        """
         if self.is_quick_reply:
             return self.theMessaging.message.payload
         else:
@@ -105,6 +147,12 @@ class MessagesEventWithQuickReply(UnifiedMessagesEvent):
     messaging: conlist(MessageMessagingWithQuickReply, max_items=1, min_items=1)
 
     def convert_to_no_reply(self):
+        """
+        Convert the reply to reply reply.
+
+        Args:
+            self: (todo): write your description
+        """
         messaging_without_reply = [self.theMessaging.convert_to_no_reply()]
         return MessagesEvent(
             **self.dict(exclude={"messaging"}),

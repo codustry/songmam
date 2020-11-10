@@ -4,6 +4,11 @@ from songmam.models.webview import Context
 
 
 def test_main():
+    """
+    The test.
+
+    Args:
+    """
     sample = """{
         "metadata": null,
         "thread_type": "USER_TO_PAGE",

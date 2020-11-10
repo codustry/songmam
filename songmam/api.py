@@ -54,29 +54,62 @@ class MessengerApi:
     api_version: str = "v8.0"
 
     def __init__(self, access_token: str, *, auto_avajana: bool = False):
+        """
+        Initialize the device.
+
+        Args:
+            self: (todo): write your description
+            access_token: (str): write your description
+            auto_avajana: (todo): write your description
+        """
         self.access_token = access_token
         self.auto_avajana = auto_avajana
 
     @property
     def base_api_furl(self) -> furl:
+        """
+        Return the api url.
+
+        Args:
+            self: (todo): write your description
+        """
         furl_url = furl("https://graph.facebook.com/") / self.api_version
         # furl_url.args['access_token'] = self.access_token
         return furl_url
 
     @property
     def avajana(self) -> Bubbling:
+        """
+        : class : class :.
+
+        Args:
+            self: (todo): write your description
+        """
         if not hasattr(self, "_avajana"):
             self._avajana = Bubbling()
         return self._avajana
 
     @avajana.setter
     def avajana(self, value):
+        """
+        Set the average of the average.
+
+        Args:
+            self: (todo): write your description
+            value: (todo): write your description
+        """
         if isinstance(value, Bubbling):
             self._avajana = value
         else:
             raise ValueError("This needs to be type of Bubbling")
 
     async def _fetch_page_info(self):
+          """
+          Downloads page info.
+
+          Args:
+              self: (todo): write your description
+          """
         async with httpx.AsyncClient(
             base_url=self.base_api_furl.url,
             headers={"Content-type": "application/json"},
@@ -146,6 +179,14 @@ class MessengerApi:
     async def send_native(
         self, payload: Union[CompletePayload], callback=None
     ) -> SendResponse:
+          """
+          Sends a payload.
+
+          Args:
+              self: (todo): write your description
+              payload: (dict): write your description
+              callback: (todo): write your description
+          """
 
         data = payload.json(exclude_none=True)
 
@@ -180,6 +221,23 @@ class MessengerApi:
         buttons: Optional[Union[AllButtonTypes, List[AllButtonTypes]]] = None,
         quick_replies: Optional[List[QuickReply]] = None,
     ):
+        """
+        Creates text to text.
+
+        Args:
+            self: (todo): write your description
+            text: (str): write your description
+            buttons: (todo): write your description
+            Optional: (todo): write your description
+            Union: (str): write your description
+            AllButtonTypes: (str): write your description
+            List: (todo): write your description
+            AllButtonTypes: (str): write your description
+            quick_replies: (todo): write your description
+            Optional: (todo): write your description
+            List: (todo): write your description
+            QuickReply: (todo): write your description
+        """
         recipient = ThingWithId.create_none()
         if buttons:
             if not isinstance(buttons, list):
@@ -203,6 +261,12 @@ class MessengerApi:
         return payload
 
     def send_receipt(self):
+        """
+        Use this method torece summary to send a song.
+
+        Args:
+            self: (todo): write your description
+        """
         from typing import List, Optional
 
         from dataclasses import dataclass
@@ -237,6 +301,12 @@ class MessengerApi:
 
             @property
             def message(self):
+                """
+                Returns a : class : payment.
+
+                Args:
+                    self: (todo): write your description
+                """
                 message = Message()
 
                 if self.elements:
@@ -268,6 +338,17 @@ class MessengerApi:
         media_sharable: Optional[bool] = None,
         quick_replies: Optional[List[QuickReply]] = None,
     ):
+        """
+        Compose media.
+
+        Args:
+            self: (todo): write your description
+            media_element: (todo): write your description
+            media_sharable: (todo): write your description
+            quick_replies: (todo): write your description
+            List: (todo): write your description
+            QuickReply: (todo): write your description
+        """
         recipient = ThingWithId.create_none()
         payload = CompletePayload(
             recipient=recipient,
@@ -289,6 +370,18 @@ class MessengerApi:
         image_aspect_ratio: Literal["horizontal", "square"] = "square",
         quick_replies: Optional[List[QuickReply]] = None,
     ):
+        """
+        A generic generic generic generic generic generic generic generic generic generic generic generic generic generic generic generic generic generic generic generic generic generic generic generic generic generic generic generic generic
+
+        Args:
+            self: (todo): write your description
+            generic_elements: (todo): write your description
+            image_aspect_ratio: (todo): write your description
+            Literal: (todo): write your description
+            quick_replies: (todo): write your description
+            Optional: (todo): write your description
+            QuickReply: (todo): write your description
+        """
         recipient = ThingWithId.create_none()
         if not isinstance(generic_elements, list):
             generic_elements = [generic_elements]
@@ -318,6 +411,20 @@ class MessengerApi:
             NotificationType
         ] = NotificationType.REGULAR,
     ):
+        """
+        Sends a notification payload.
+
+        Args:
+            self: (todo): write your description
+            payload: (todo): write your description
+            recipient: (str): write your description
+            persona_id: (str): write your description
+            messaging_type: (str): write your description
+            RESPONSE: (todo): write your description
+            tag: (str): write your description
+            notification_type: (str): write your description
+            REGULAR: (str): write your description
+        """
         if isinstance(recipient, str):
             recipient = Sender(id=recipient)
 
@@ -351,6 +458,39 @@ class MessengerApi:
         auto_avajana: Optional[bool] = None,
         emu_type: bool = False,
     ):
+          """
+          Use this method to send text.
+
+          Args:
+              self: (todo): write your description
+              recipient: (str): write your description
+              text: (str): write your description
+              buttons: (str): write your description
+              AllButtonTypes: (str): write your description
+              List: (todo): write your description
+              AllButtonTypes: (str): write your description
+              quick_replies: (str): write your description
+              QuickReply: (str): write your description
+              List: (todo): write your description
+              QuickReply: (str): write your description
+              generic_elements: (str): write your description
+              GenericElement: (todo): write your description
+              List: (todo): write your description
+              GenericElement: (todo): write your description
+              image_aspect_ratio: (str): write your description
+              Literal: (int): write your description
+              media_element: (todo): write your description
+              media_sharable: (todo): write your description
+              persona_id: (str): write your description
+              messaging_type: (str): write your description
+              RESPONSE: (todo): write your description
+              tag: (str): write your description
+              notification_type: (str): write your description
+              REGULAR: (str): write your description
+              callback: (todo): write your description
+              auto_avajana: (str): write your description
+              emu_type: (str): write your description
+          """
         if auto_avajana is None:
             auto_avajana = self.auto_avajana
         if isinstance(recipient, str):
@@ -416,6 +556,13 @@ class MessengerApi:
         self,
         recipient: Union[Sender, str],
     ):
+          """
+          Use this method to pika message.
+
+          Args:
+              self: (todo): write your description
+              recipient: (str): write your description
+          """
         if isinstance(recipient, str):
             recipient = Sender(id=recipient)
 
@@ -429,6 +576,13 @@ class MessengerApi:
         self,
         recipient: Union[Sender, str],
     ):
+          """
+          Sends a message to send to send / send a recipient.
+
+          Args:
+              self: (todo): write your description
+              recipient: (str): write your description
+          """
         if isinstance(recipient, str):
             recipient = Sender(id=recipient)
 
@@ -439,6 +593,13 @@ class MessengerApi:
         return await self.send_native(payload)
 
     async def mark_seen(self, recipient: Type[ThingWithId]):
+          """
+          Marks the bot to the specified * recipient.
+
+          Args:
+              self: (todo): write your description
+              recipient: (str): write your description
+          """
         payload = SenderActionPayload(
             recipient=recipient, sender_action=SenderAction.MARK_SEEN
         )
@@ -452,6 +613,16 @@ class MessengerApi:
         prepause_seconds: float = 0.0,
         postpause_seconds: float = 0.0,
     ):
+          """
+          Sleeps the timestamp.
+
+          Args:
+              self: (todo): write your description
+              seconds: (todo): write your description
+              recipient: (str): write your description
+              prepause_seconds: (bool): write your description
+              postpause_seconds: (bool): write your description
+          """
         await asyncio.sleep(prepause_seconds)
         await self.typing_on(recipient)
         await asyncio.sleep(seconds)
@@ -463,6 +634,13 @@ class MessengerApi:
     """
 
     async def set_messenger_profile(self, data: MessengerProfile):
+          """
+          Sets the user profile.
+
+          Args:
+              self: (todo): write your description
+              data: (todo): write your description
+          """
 
         data = data.json(exclude_none=True)
         async with httpx.AsyncClient(
@@ -481,6 +659,13 @@ class MessengerApi:
     async def delete_messenger_profile(
         self, properties: Set[MessengerProfileProperty]
     ):
+          """
+          Deletes the specified profile.
+
+          Args:
+              self: (todo): write your description
+              properties: (todo): write your description
+          """
         data = json.dumps({"fields": [p.value for p in properties]})
         async with httpx.AsyncClient(
             base_url=self.base_api_furl.url,
@@ -501,6 +686,13 @@ class MessengerApi:
     """
 
     async def get_user_settings(self, user_id: str):
+          """
+          Get user settings.
+
+          Args:
+              self: (todo): write your description
+              user_id: (int): write your description
+          """
 
         async with httpx.AsyncClient(
             base_url=self.base_api_furl.url,
@@ -521,6 +713,14 @@ class MessengerApi:
     async def set_user_menu(
         self, user: Union[str, Type[ThingWithId]], menus: List[MenuPerLocale]
     ):
+          """
+          See : https : // core. telegram.
+
+          Args:
+              self: (todo): write your description
+              user: (todo): write your description
+              menus: (str): write your description
+          """
         if isinstance(user, str):
             user = ThingWithId(id=user)
 
@@ -540,6 +740,13 @@ class MessengerApi:
             raise Exception(response.text)
 
     async def delete_user_menu(self, user_id: str):
+          """
+          Call documentation : param user menu.
+
+          Args:
+              self: (todo): write your description
+              user_id: (str): write your description
+          """
         params = {
             "access_token": self.access_token,
             "psid": user_id,
@@ -561,6 +768,13 @@ class MessengerApi:
         return response.json()
 
     async def create_persona(self, persona: Persona) -> PersonaResponse:
+          """
+          Create a person.
+
+          Args:
+              self: (todo): write your description
+              persona: (str): write your description
+          """
         data = persona.json()
 
         async with httpx.AsyncClient(
@@ -579,6 +793,13 @@ class MessengerApi:
         return PersonaResponse.parse_raw(response.text)
 
     async def get_persona(self, id):
+          """
+          Retrieves a person.
+
+          Args:
+              self: (todo): write your description
+              id: (int): write your description
+          """
 
         async with httpx.AsyncClient(
             base_url=self.base_api_furl.url,
@@ -595,6 +816,12 @@ class MessengerApi:
         return PersonaWithId.parse_raw(response.text)
 
     async def get_all_personas(self) -> List[PersonaWithId]:
+          """
+          Get person person.
+
+          Args:
+              self: (todo): write your description
+          """
 
         async with httpx.AsyncClient(
             base_url=self.base_api_furl.url,
@@ -616,6 +843,13 @@ class MessengerApi:
         return response.data
 
     async def delete_persona(self, id):
+          """
+          Delete person.
+
+          Args:
+              self: (todo): write your description
+              id: (str): write your description
+          """
 
         async with httpx.AsyncClient(
             base_url=self.base_api_furl.url,

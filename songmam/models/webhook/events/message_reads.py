@@ -16,6 +16,12 @@ class ReadMessaging(BaseMessaging, WithTimestamp):
 
     @property
     def watermark(self):
+        """
+        Read watermark.
+
+        Args:
+            self: (todo): write your description
+        """
         return self.read.watermark
 
 

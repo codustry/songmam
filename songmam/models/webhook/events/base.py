@@ -21,12 +21,30 @@ class WithMessaging(BaseModel):
 
     @property
     def theMessaging(self):
+        """
+        : return : class : ~.
+
+        Args:
+            self: (todo): write your description
+        """
         return self.messaging[0]
 
     @property
     def sender(self):
+        """
+        Return the sender s sender.
+
+        Args:
+            self: (todo): write your description
+        """
         return self.theMessaging.sender
 
     @property
     def recipient(self):
+        """
+        Recipientaging the recipient.
+
+        Args:
+            self: (todo): write your description
+        """
         return self.theMessaging.recipient

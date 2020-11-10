@@ -23,10 +23,22 @@ class MessageDeliveriesEvent(BaseEvent, WithMessaging):
 
     @property
     def mids(self):
+        """
+        : class instance : the : class.
+
+        Args:
+            self: (todo): write your description
+        """
         return self.theMessaging.delivery.mids
 
     @property
     def watermark(self):
+        """
+        Return watermark.
+
+        Args:
+            self: (todo): write your description
+        """
         return self.theMessaging.delivery.watermark
 
 

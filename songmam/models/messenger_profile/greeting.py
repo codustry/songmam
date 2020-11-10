@@ -9,6 +9,13 @@ class GreetingPerLocale(ThingWithLocale):
 
     @validator("text")
     def char_limit_to_160(cls, value):
+        """
+        Convert a character to a limit.
+
+        Args:
+            cls: (todo): write your description
+            value: (todo): write your description
+        """
         if len(value) > 160:
             raise ValueError("Must be in UTF-8. 160 character limit.")
         return value

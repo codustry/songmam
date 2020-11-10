@@ -30,6 +30,18 @@ class WebhookHandler:
         verify_token: Optional[str] = None,
         auto_mark_as_seen: bool = True,
     ):
+        """
+        Initialize a webhook.
+
+        Args:
+            self: (todo): write your description
+            app: (todo): write your description
+            path: (str): write your description
+            app_secret: (str): write your description
+            dynamic_import: (str): write your description
+            verify_token: (str): write your description
+            auto_mark_as_seen: (todo): write your description
+        """
         self._post_webhook_handlers = {}
         self._pre_webhook_handlers = {}
         self.app = app
@@ -79,6 +91,15 @@ class WebhookHandler:
             request: Request,
             signature: str = Header(..., alias="X-Hub-Signature"),
         ):
+              """
+              Handle webhook request.
+
+              Args:
+                  request: (todo): write your description
+                  signature: (str): write your description
+                  Header: (str): write your description
+                  alias: (str): write your description
+              """
             body = await request.body()
 
             if self.app_secret:
@@ -111,6 +132,13 @@ class WebhookHandler:
     _delivered_callbacks_key_regex = {}
 
     async def handle_webhook(self, webhook: Webhook, *args, **kwargs):
+          """
+          Handle a webhook.
+
+          Args:
+              self: (todo): write your description
+              webhook: (todo): write your description
+          """
         for event in webhook.entry:
             event_type = type(event)
 
@@ -161,6 +189,13 @@ class WebhookHandler:
         event: Union[MessagesEventWithQuickReply, PostbackEvent],
         **kwargs,
     ):
+          """
+          Call the dynamic callbacks.
+
+          Args:
+              self: (todo): write your description
+              event: (todo): write your description
+          """
         payload = event.payload
         kwargs["event"] = event
         if self.uncaught_postback_handler:
@@ -189,6 +224,12 @@ class WebhookHandler:
         """
 
         def decorator(func):
+            """
+            Decorator to register a webhook.
+
+            Args:
+                func: (todo): write your description
+            """
             self._pre_webhook_handlers[entry_type] = func
             # if isinstance(text, (list, tuple)):
             #     for it in text:
@@ -220,6 +261,12 @@ class WebhookHandler:
         #             spaces.append(tuple(con))
 
         def decorator(func):
+            """
+            Decorator to register a webhook.
+
+            Args:
+                func: (todo): write your description
+            """
             # for condition in product(*spaces):
             self._webhook_handlers[event_type] = func
 
@@ -239,6 +286,12 @@ class WebhookHandler:
         """
 
         def decorator(func):
+            """
+            Decorator to register a webhook.
+
+            Args:
+                func: (todo): write your description
+            """
             self._post_webhook_handlers[entry_type] = func
             # if isinstance(text, (list, tuple)):
             #     for it in text:
@@ -253,7 +306,22 @@ class WebhookHandler:
     def add_postback_handler(
         self, regexes: List[str] = None, quick_reply=True, button=True
     ):
+        """
+        Decorator to add a postback.
+
+        Args:
+            self: (todo): write your description
+            regexes: (todo): write your description
+            quick_reply: (todo): write your description
+            button: (todo): write your description
+        """
         def wrapper(func):
+            """
+            Decorator to callbacks.
+
+            Args:
+                func: (callable): write your description
+            """
             if regexes is None:
                 return func
 
@@ -268,10 +336,24 @@ class WebhookHandler:
         return wrapper
 
     def set_uncaught_postback_handler(self, func):
+        """
+        Sets the decorated function to be runbackback handler.
+
+        Args:
+            self: (todo): write your description
+            func: (callable): write your description
+        """
         self.uncaught_postback_handler = func
         return func
 
     def get_quick_reply_callbacks(self, entry: MessagesEvent):
+        """
+        Return a list of callbacks that are registered to callbacks.
+
+        Args:
+            self: (todo): write your description
+            entry: (str): write your description
+        """
         callbacks = []
         for key in self._quick_reply_callbacks.keys():
             if key not in self._quick_reply_callbacks_key_regex:
@@ -285,6 +367,13 @@ class WebhookHandler:
         return callbacks
 
     def get_postback_callbacks(self, entry: PostbackEvent):
+        """
+        Return a list of postback events.
+
+        Args:
+            self: (todo): write your description
+            entry: (str): write your description
+        """
         callbacks = []
         for key in self._button_callbacks.keys():
             if key not in self._button_callbacks_key_regex:
