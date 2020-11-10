@@ -33,7 +33,6 @@ classifiers = [  # Update me
 
 [tool.poetry.dependencies]
 python = "^3.8"
-starlette = "^0.13.4"
 loguru = "^0.5.1"
 httpx = "^0.13.3"
 furl = "^2.1.0"
@@ -43,6 +42,7 @@ parse = "^1.16.0"
 path = "^15.0.0"
 moshimoshi = "^0.2"
 arrow = "^0.17.0"
+fastapi = "^0.61.2"
 
 [tool.poetry.dev-dependencies]
 darglint = "^1.5.4"

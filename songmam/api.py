@@ -1,4 +1,4 @@
-from typing import Awaitable, List, Literal, Optional, Set, Type, Union
+from typing import List, Literal, Optional, Set, Type, Union
 
 import asyncio
 import json
@@ -92,19 +92,22 @@ class MessengerApi:
     async def get_user_profile(
         self,
         user: Type[ThingWithId],
-        fields: Set[str] = {
-            "id",
-            "name",
-            "first_name",
-            "last_name",
-            "profile_pic",
-        },
+        fields: Optional[Set[str]] = None,
     ) -> UserProfile:
         """
         Get user profile using id
         References:
             https://developers.facebook.com/docs/messenger-platform/identity/user-profile
         """
+        if fields:
+            fields = {
+                "id",
+                "name",
+                "first_name",
+                "last_name",
+                "profile_pic",
+            }
+
         fields = ",".join(fields)
         async with httpx.AsyncClient(
             base_url=self.base_api_furl.url,
@@ -471,10 +474,6 @@ class MessengerApi:
                 "/me/messenger_profile",
                 data=data,
             )
-        # r = requests.post(f_url.url,
-        #                   params={"access_token": self.access_token},
-        #                   data=data.json(exclude_none=True),
-        #                   headers={'Content-type': 'application/json'})
 
         if response.status_code != 200:
             raise Exception(response.text)

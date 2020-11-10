@@ -134,7 +134,7 @@ class PassengerSegmentInfo(BaseModel):
     """
 
     segment_id: str
-    passenger_id: PassengerInfo.passenger_id
+    passenger_id: PassengerInfo
     seat: str
     seat_type: str
     product_info: Optional[

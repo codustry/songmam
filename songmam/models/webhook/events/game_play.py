@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from songmam.models.webhook.events.base import WithTimestamp
+from songmam.models.webhook.events.base import BaseMessaging, WithTimestamp
 
 
 class GamePlay(BaseModel):

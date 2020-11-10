@@ -1,6 +1,6 @@
-from typing import List, Literal, Optional
+from typing import Literal, Optional
 
-from pydantic import BaseModel, conlist, validator
+from pydantic import BaseModel, conlist
 from songmam.models.messaging.templates.button import AllButtonTypes
 
 

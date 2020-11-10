@@ -1,4 +1,4 @@
-from typing import Awaitable, Callable, List, Optional, Union
+from typing import Callable, List, Optional, Union
 
 import asyncio
 import re
@@ -8,7 +8,6 @@ from fastapi.responses import PlainTextResponse
 from loguru import logger
 from moshimoshi import moshi
 from parse import parse
-from path import Path
 from pydantic import ValidationError
 from songmam.models.webhook import MessagesEventWithQuickReply, Webhook
 from songmam.models.webhook.events.messages import MessagesEvent

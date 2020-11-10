@@ -1,4 +1,4 @@
-from typing import Dict, NewType, Optional
+from typing import Dict, Optional
 
 import base64
 import hashlib

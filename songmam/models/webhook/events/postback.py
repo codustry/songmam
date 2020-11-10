@@ -3,10 +3,7 @@ from typing import Literal, Optional
 from pydantic import BaseModel, conlist
 from songmam.models.webhook.events.base import BaseEvent, WithMessaging
 from songmam.models.webhook.events.echo import Message
-from songmam.models.webhook.events.messages import (
-    MessageMessaging,
-    MessagesEvent,
-)
+from songmam.models.webhook.events.messages import MessageMessaging
 
 
 class PostbackReferral(BaseModel):

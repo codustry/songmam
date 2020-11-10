@@ -1,7 +1,7 @@
 # Git
 .git
 songmam/.gitignore
-../.github
+.github
 
 # Docker
 .dockerignore
@@ -29,7 +29,6 @@ __pycache__/
 *.so
 
 # Virtual environment
-.venv
 venv
 
 .DS_Store

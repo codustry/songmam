@@ -1,7 +1,7 @@
 from typing import Literal
 
 from pydantic import BaseModel
-from songmam.models.webhook.events.base import WithTimestamp
+from songmam.models.webhook.events.base import BaseMessaging, WithTimestamp
 
 
 class Reaction(BaseModel):
