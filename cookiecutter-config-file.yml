@@ -1,0 +1,10 @@
+# This file contains values from Cookiecutter
+
+default_context:
+  project_name: "songmam"
+  project_description: "a facebook messenger hypermodern python library based on fastapi. "
+  organization: "codustry"
+  license: "MIT"
+  version: "1.7.2"
+  github_name: "codustry"
+  email: "hello@codustry.com"
