@@ -8,6 +8,7 @@ from inspect import iscoroutine
 import httpx
 from avajana.bubbling import Bubbling
 from furl import furl
+from loguru import logger
 from songmam.models import ThingWithId
 from songmam.models.messaging.message_tags import MessageTag
 from songmam.models.messaging.messaging_type import MessagingType
@@ -46,6 +47,7 @@ from songmam.models.persona import (
 )
 from songmam.models.send import SendResponse
 from songmam.models.user_profile import UserProfile
+from songmam.models.webhook.events.message.attachment import Attachment
 from songmam.models.webhook.events.messages import Sender
 
 
@@ -178,10 +180,17 @@ class MessengerApi:
         self,
         text: str,
         buttons: Optional[Union[AllButtonTypes, List[AllButtonTypes]]] = None,
+        attachment: Optional[Attachment] = None,
         quick_replies: Optional[List[QuickReply]] = None,
     ):
         recipient = ThingWithId.create_none()
+
         if buttons:
+            if attachment is not None:
+                logger.error(
+                    "Only button or attachment could be set at a time. Your attactment will be skip"
+                )
+
             if not isinstance(buttons, list):
                 buttons = [buttons]
             payload = CompletePayload(
@@ -192,6 +201,14 @@ class MessengerApi:
                             template_type="button", text=text, buttons=buttons
                         )
                     ),
+                    quick_replies=quick_replies,
+                ),
+            )
+        elif attachment:
+            payload = CompletePayload(
+                recipient=recipient,
+                message=Message(
+                    attachment=attachment,
                     quick_replies=quick_replies,
                 ),
             )
@@ -333,6 +350,7 @@ class MessengerApi:
         recipient: Union[Sender, str],
         text: Optional[str] = None,
         *,
+        attachment: Optional[Attachment] = None,
         buttons: Optional[Union[AllButtonTypes, List[AllButtonTypes]]] = None,
         quick_replies: Optional[Union[QuickReply, List[QuickReply]]] = None,
         generic_elements: Optional[
@@ -377,7 +395,10 @@ class MessengerApi:
             )
         else:
             payload = self.compose_text(
-                text=text, buttons=buttons, quick_replies=quick_replies
+                text=text,
+                buttons=buttons,
+                quick_replies=quick_replies,
+                attachment=attachment,
             )
 
         payload = self.rehydrate_payload(

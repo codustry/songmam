@@ -40,7 +40,7 @@ class Message(BaseModel):
     """
 
     text: Optional[str]
-    attachment: Optional[TemplateAttachment]
+    attachment: Optional[Union[TemplateAttachment, Attachment_]]
     quick_replies: Optional[List[QuickReply]]
     metadata: Optional[str]
 
