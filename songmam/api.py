@@ -205,6 +205,8 @@ class MessengerApi:
                 ),
             )
         elif attachment:
+            # todo: verbose if text is specify or add validation to message
+            # Exception('{"error":{"message":"(#100) Only one of the text, attachment, and dynamic_text fields can be specified","type":"OAuthException","code":100,"error_subcode":2018191,"fbtrace_id":"A7Y-lr_YqkgZCbTzCfc8iyi"}}')
             payload = CompletePayload(
                 recipient=recipient,
                 message=Message(
