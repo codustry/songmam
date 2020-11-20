@@ -6,7 +6,7 @@ build-backend = "poetry.masonry.api"
 
 [tool.poetry]
 name = "songmam"
-version = "1.8.2"
+version = "1.8.4"
 description = "a facebook messenger hypermodern python library based on fastapi. "
 readme = "README.md"
 authors = [

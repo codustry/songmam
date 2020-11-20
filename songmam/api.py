@@ -101,7 +101,7 @@ class MessengerApi:
         References:
             https://developers.facebook.com/docs/messenger-platform/identity/user-profile
         """
-        if fields:
+        if fields is None:
             fields = {
                 "id",
                 "name",
@@ -111,6 +111,7 @@ class MessengerApi:
             }
 
         fields = ",".join(fields)
+        # todo: make a async with for this client creation
         async with httpx.AsyncClient(
             base_url=self.base_api_furl.url,
             headers={"Content-type": "application/json"},
@@ -151,10 +152,12 @@ class MessengerApi:
 
         data = payload.json(exclude_none=True)
 
+        # todo: applies timeout to all
         async with httpx.AsyncClient(
             base_url=self.base_api_furl.url,
             headers={"Content-type": "application/json"},
             params={"access_token": self.access_token},
+            timeout=10.0,
         ) as client:
             response = await client.post(
                 "/me/messages",
