@@ -53,7 +53,7 @@ from songmam.models.webhook.events.messages import Sender
 
 class MessengerApi:
     access_token: str
-    api_version: str = "v8.0"
+    api_version: str = "v9.0"
 
     def __init__(self, access_token: str, *, auto_avajana: bool = False):
         self.access_token = access_token
@@ -564,6 +564,8 @@ class MessengerApi:
 
         if response.status_code != 200:
             raise Exception(response.text)
+
+        return response
 
     async def delete_user_menu(self, user_id: str):
         params = {

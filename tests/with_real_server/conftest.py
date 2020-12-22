@@ -22,5 +22,5 @@ def recipient():
 
 @pytest.fixture
 def test_user():
-    # Tan
-    return Sender(id="2945944152161824")
+    # Ben, Saku Jobbot
+    return Sender(id=config('test_user_psid'))
