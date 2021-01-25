@@ -1,5 +1,11 @@
 # songmam
 
+<p align="center">
+  <a href="https://swc.rs/">
+    <img alt="babel" src="https://storage.googleapis.com/codustry_assets/github/icon-shadow-jingdi.png" height="150">
+  </a>
+</p>
+
 <div align="center">
 
 [![Build status](https://github.com/codustry/songmam/workflows/build/badge.svg?branch=master&event=push)](https://github.com/codustry/songmam/actions?query=workflow%3Abuild)
