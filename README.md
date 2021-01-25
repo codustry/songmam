@@ -1,10 +1,10 @@
-# songmam
-
 <p align="center">
-  <a href="https://swc.rs/">
-    <img alt="babel" src="https://storage.googleapis.com/codustry_assets/github/icon-shadow-jingdi.png" height="150">
+  <a href="https://codustry.com/technologies/songmam">
+    <img alt="babel" src="https://storage.googleapis.com/codustry_assets/github/icon-shadow-songmam.png" height="100">
   </a>
 </p>
+
+# Songmam (ส่งแม่ม)
 
 <div align="center">
 
