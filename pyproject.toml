@@ -37,12 +37,12 @@ loguru = "^0.5.1"
 httpx = "^0.16.1"
 furl = "^2.1.0"
 avajana = "^0.4"
-autoname = "^0.1.2"
 parse = "^1.16.0"
 path = "^15.0.0"
 moshimoshi = "^0.2"
 arrow = "^0.17.0"
 fastapi = "^0.61.2"
+autoname = "^1.0.0"
 
 [tool.poetry.dev-dependencies]
 darglint = "^1.5.4"
