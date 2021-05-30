@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "echo"
+version = "0.1.0"
+description = "a simple echo facebook bot using fastapi with songmam"
+authors = ["Nutchanon Ninyawee <nutchanon@codustry.com>"]
+license = "ISC"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+songmam = "^1.9.1"
+fastapi = "^0.61.2"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
