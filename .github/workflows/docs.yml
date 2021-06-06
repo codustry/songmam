@@ -41,7 +41,7 @@ jobs:
 
     - name: Add Custom Domain Settings
       run: |
-        echo "pythainav.nutchanon.org" >> ./site/CNAME
+        echo "songmam.codustry.com" >> ./site/CNAME
 
     - name: Deploy Docs
       if: steps.cache.outputs.cache-hit != 'true'
