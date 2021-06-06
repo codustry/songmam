@@ -29,7 +29,7 @@ a facebook messenger hypermodern python library based on fastapi.
 ## Features
 
 - Async
-- based Pydantic, easy to work with `Fastapi`
+- based on Pydantic, easy to work with `FastApi`
 - 1-1 structure to official facebook documentation
 
   
