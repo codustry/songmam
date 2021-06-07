@@ -16,11 +16,6 @@ class FacebookSettings(BaseSettings):
     FACEBOOK_PAGE_ACCESS_TOKEN: str
     FACEBOOK_PAGE_VERIFY_TOKEN: Optional[str] = None
 
-    def create_messenger_api(self):
-        return MessengerApi(
-            access_token=self.FACEBOOK_PAGE_ACCESS_TOKEN,
-        )
-
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"

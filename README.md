@@ -29,8 +29,9 @@ a facebook messenger hypermodern python library based on fastapi.
 ## Features
 
 - Async
-- based on Pydantic, easy to work with `FastApi`
-- 1-1 structure to official facebook documentation
+- based on `Pydantic`, easy to work with `FastApi`
+- 1-1 structure to [official facebook documentation](https://developers.facebook.com/docs/messenger-platform/)
+- Implement validation and Security Protocals
 
   
 ## Installation 
@@ -40,7 +41,8 @@ pip install songmam
 ```
 ## Documentation
 
-[Documentation](https://linktodocumentation)
+WIP
+<!-- [Documentation](https://linktodocumentation) -->
 
   
 ## Usage/Examples
@@ -48,11 +50,30 @@ pip install songmam
 There are a few examples under the folder, `examples`
 
 ```python
-import Component from 'my-project'
+from fastapi import FastAPI
 
-function App() {
-  return <Component />
-}
+from songmam import WebhookHandler, MessengerApi
+from songmam.models.webhook import MessagesEvent
+
+app = FastAPI(
+    title="echo"
+)
+
+
+handler = WebhookHandler(
+    app=app, path="/webhook", app_secret=FACEBOOK_APP_SECRET, verify_token=FACEBOOK_PAGE_VERIFY_TOKEN
+)
+
+api = MessengerApi(access_token=FACEBOOK_PAGE_ACCESS_TOKEN)
+
+
+@handler.add(MessagesEvent)
+async def handle_message(event: MessagesEvent, *args, **kwargs):
+    """
+    echo back message
+    """
+    await api.send(event.theMessaging.sender, event.theMessaging.message.text)
+
 ```
 
   
@@ -61,18 +82,18 @@ function App() {
 This project is used by the following companies:
 
 - Codustry
-  - Gebwai
-  - Saku Chatbot
+  - [Gebwai](https://gebwai.com/)
+  - [Saku Chatbot](https://saku.freaklab.org/)
 
   
 ## Authors
 
-- [@circleoncircles](https://www.github.com/kcircleoncircles)
+- [@circleoncircles](https://www.github.com/circleoncircles)
 
   
 ## Feedback
 
-If you have any feedback, please reach out to us at saku@coudstry.com
+If you have any feedback, you can create an issue or PR.
 
   
 
