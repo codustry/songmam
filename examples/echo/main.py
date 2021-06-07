@@ -29,10 +29,10 @@ class FacebookSettings(BaseSettings):
 settings = FacebookSettings()
 
 handler = WebhookHandler(
-    app, app_secret=settings.FACEBOOK_APP_SECRET, verify_token=settings.FACEBOOK_PAGE_VERIFY_TOKEN
+    app=app, path="/webhook", app_secret=settings.FACEBOOK_APP_SECRET, verify_token=settings.FACEBOOK_PAGE_VERIFY_TOKEN
 )
 
-api = settings.create_messenger_api()
+api = MessengerApi(access_token=settings.FACEBOOK_PAGE_ACCESS_TOKEN,)
 
 
 @handler.add(MessagesEvent)

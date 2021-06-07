@@ -1,0 +1,13 @@
+# https://taskfile.dev
+
+version: '3'
+
+
+tasks:
+  turnel:
+    cmds:
+      - ngrok http 8000
+  dev:
+    cmds:
+      - pipenv install
+      - pipenv run python main.py

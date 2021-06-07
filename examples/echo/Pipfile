@@ -6,9 +6,13 @@ name = "pypi"
 [packages]
 songmam = "*"
 fastapi = "*"
-pydantic = {extras = ["dotenv"], version = "*"}
+uvicorn = "*"
 
 [dev-packages]
+
+[packages.pydantic]
+extras = [ "dotenv",]
+version = "*"
 
 [requires]
 python_version = "3.8"
