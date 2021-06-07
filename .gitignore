@@ -622,3 +622,5 @@ MigrationBackup/
 .idea/vagrant.xml
 
 .env
+examples/echo/.vscode/settings.json
+examples/echo/.envrc
