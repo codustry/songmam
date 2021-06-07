@@ -6,7 +6,7 @@ build-backend = "poetry.masonry.api"
 
 [tool.poetry]
 name = "songmam"
-version = "1.9.0"
+version = "1.10.0"
 description = "a facebook messenger hypermodern python library based on fastapi. "
 readme = "README.md"
 authors = [
@@ -40,8 +40,8 @@ avajana = "^0.4"
 parse = "^1.16.0"
 path = "^15.0.0"
 moshimoshi = "^0.2"
-arrow = "^0.17.0"
-fastapi = "^0.61.2"
+arrow = ">=0.17,<1.2"
+fastapi = ">=0.61.2,<0.66.0"
 autoname = "^1.0.0"
 
 [tool.poetry.dev-dependencies]
@@ -49,18 +49,19 @@ darglint = "^1.5.4"
 isort = "^5.5.4"
 pyupgrade = "^2.7.4"
 black = "^20.8b1"
-mypy = "^0.790"
+mypy = "^0.812"
 bandit = "^1.6.2"
 safety = "^1.9.0"
 pytest = "^6.0.1"
 pylint = "^2.5.3"
 pydocstyle = "^5.0.2"
 pre-commit = "^2.7.1"
-faker = "^4.1.1"
+faker = "^8.5.1"
 pytest-asyncio = "^0.14.0"
 python-decouple = "^3.3"
 freezegun = "^1.0.0"
 pdoc = "^7.0.3"
+mkdocs = "^1.1.2"
 
 [tool.black]
 # https://github.com/psf/black
