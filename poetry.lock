@@ -520,7 +520,7 @@ python-versions = ">=2.6"
 
 [[package]]
 name = "pdoc"
-version = "7.0.3"
+version = "7.1.0"
 description = "API Documentation for Python Projects"
 category = "dev"
 optional = false
@@ -901,7 +901,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "f501a0d2dd067e73b6559e5ec4a181d32a92ca51f60188cf2bf28f964135519c"
+content-hash = "ef19148abfe5d9952859a65a434f54e63c702337ed821246d402dc8af20915e9"
 
 [metadata.files]
 appdirs = [
@@ -1157,7 +1157,7 @@ pbr = [
     {file = "pbr-5.6.0.tar.gz", hash = "sha256:42df03e7797b796625b1029c0400279c7c34fd7df24a7d7818a1abb5b38710dd"},
 ]
 pdoc = [
-    {file = "pdoc-7.0.3-py3-none-any.whl", hash = "sha256:0f6c2b7fd1a73cfb6c14582d7b51e3968c6a93507c9e7dbcd8f2eab07c8b104f"},
+    {file = "pdoc-7.1.0-py3-none-any.whl", hash = "sha256:2704a14a56d528636c066b3c29ebafd4a659548aaad2a9b2368e9e28a689069f"},
 ]
 pluggy = [
     {file = "pluggy-0.13.1-py2.py3-none-any.whl", hash = "sha256:966c145cd83c96502c3c3868f50408687b38434af77734af1e9ca461a4081d2d"},
