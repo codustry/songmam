@@ -41,7 +41,7 @@ parse = "^1.16.0"
 path = "^15.0.0"
 moshimoshi = "^0.2"
 arrow = ">=0.17,<1.2"
-fastapi = "^0.61.2"
+fastapi = ">=0.61.2,<0.73.0"
 autoname = "^1.0.0"
 
 [tool.poetry.dev-dependencies]
