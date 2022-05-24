@@ -34,7 +34,7 @@ classifiers = [  # Update me
 [tool.poetry.dependencies]
 python = "^3.8"
 loguru = "^0.5.1"
-httpx = "^0.16.1"
+httpx = ">=0.16.1,<0.24.0"
 furl = "^2.1.0"
 avajana = "^0.4"
 parse = "^1.16.0"
